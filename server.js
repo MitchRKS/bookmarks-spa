@@ -11,6 +11,10 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
+const db = require("./backend/db");
+db.once("open", () => {
+  console.log("connected to mongo");
+});
 app.get("/api", (req, res) => {
   res.json({ message: "The server is alive!!!" });
 });
