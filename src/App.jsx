@@ -1,6 +1,9 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import { ProvideAuthController, useAuthController } from "./AuthController";
+import AllBookmarks from "./components/AllBookmarks";
+import { ProvideBookmarksController } from "./BookmarksController";
+import CreateBookmark from "./components/CreateBookmark";
 function App() {
   return (
     <div className="App">
@@ -35,9 +38,10 @@ function Signup() {
 
 function Dashboard() {
   return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
+    <ProvideBookmarksController>
+      <AllBookmarks />;
+      <CreateBookmark />
+    </ProvideBookmarksController>
   );
 }
 export default App;
