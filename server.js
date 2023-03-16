@@ -4,7 +4,7 @@ const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
-
+const bookmarkController = require("./backend/controllers/bookmarkController");
 const app = express();
 
 app.use(logger("dev"));
@@ -18,9 +18,7 @@ db.once("open", () => {
   console.log("connected to mongo");
 });
 
-app.get("/api", (req, res) => {
-  res.json({ message: "The server is alive!!!" });
-});
+app.use("/api", bookmarkController);
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));

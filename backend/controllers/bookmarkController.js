@@ -1,5 +1,4 @@
 const express = require("express");
-const { default: AllBookmarks } = require("../../src/components/AllBookmarks");
 const router = express.Router();
 
 const Bookmark = require("../models/bookmarks");
@@ -8,7 +7,7 @@ const Bookmark = require("../models/bookmarks");
 router.get("/", async (req, res) => {
   try {
     const query = await Bookmark.find({});
-    return query;
+    return res.json(query);
   } catch (error) {
     res.status(500).json({ error });
   }
