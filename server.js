@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
@@ -15,6 +17,7 @@ const db = require("./backend/db");
 db.once("open", () => {
   console.log("connected to mongo");
 });
+
 app.get("/api", (req, res) => {
   res.json({ message: "The server is alive!!!" });
 });
